@@ -1,0 +1,15 @@
+#platillos {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  height: 100px;
+}
+
+ion-chip {
+  align-self: flex-end !important;
+}
+
+ion-chip:last-of-type {
+  border-bottom: none;
+}

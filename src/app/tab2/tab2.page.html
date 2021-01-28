@@ -1,17 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Pedidos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let student of students">
+      <ion-item-options side="start">
+        <ion-item-option color="secondary" (click)="update(student,true)">
+          <ion-icon name="checkmark"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item tappable (click)="detail(student)">
+        <div id="platillos">
+          <label>Mesa: <strong>{{student.mesa}}</strong></label>
+          <div>
+            <ion-chip color="secondary" *ngIf="student.active">
+              <ion-label>Activo</ion-label>
+            </ion-chip>
+            <ion-chip color="danger" *ngIf="!student.active">
+              <ion-label>Inactivo</ion-label>
+            </ion-chip>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="update(student,false)">
+          <ion-icon name="close"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
